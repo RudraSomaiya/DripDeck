@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- A swing tag, the kind that hangs off new clothes. -->
+  <g transform="rotate(-14 512 540)">
+    <path fill="#14306E" fill-rule="evenodd" d="M380 140H644L772 268V860Q772 916 716 916H308Q252 916 252 860V268ZM512 236A58 58 0 1 0 512 352A58 58 0 1 0 512 236Z"/>
+    <path fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" d="M330 560H694M330 650H600"/>
+  </g>
+</svg>

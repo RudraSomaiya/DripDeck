@@ -1,0 +1,11 @@
+node_modules
+dist
+*.local
+
+# Rust build output
+src-tauri/target
+src-tauri/gen
+
+# The built app and the wardrobe folder next to it (your photos)
+app
+data
