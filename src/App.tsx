@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react'
 import type { Db } from './logic'
 import { loadDb, saveDb } from './store'
 import { Closet } from './Closet'
+import { Dress } from './Dress'
 import { Icon, Mark, type IconName } from './ui'
 
 export type Update = (change: (db: Db) => Db) => void
-type View = 'closet'
+type View = 'closet' | 'dress'
 
 const NAV: [View, string, IconName][] = [
   ['closet', 'Closet', 'hanger'],
+  ['dress', 'Get dressed', 'shuffle'],
 ]
 
 export function App() {
@@ -51,6 +53,7 @@ export function App() {
           </p>
         )}
         {view === 'closet' && <Closet db={db} update={update} query={query} setQuery={setQuery} onError={setError} />}
+        {view === 'dress' && <Dress db={db} update={update} goCloset={() => setView('closet')} />}
       </main>
     </div>
   )
