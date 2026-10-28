@@ -3,14 +3,16 @@ import type { Db } from './logic'
 import { loadDb, saveDb } from './store'
 import { Closet } from './Closet'
 import { Dress } from './Dress'
+import { Fits } from './Fits'
 import { Icon, Mark, type IconName } from './ui'
 
 export type Update = (change: (db: Db) => Db) => void
-type View = 'closet' | 'dress'
+type View = 'closet' | 'dress' | 'fits'
 
 const NAV: [View, string, IconName][] = [
   ['closet', 'Closet', 'hanger'],
   ['dress', 'Get dressed', 'shuffle'],
+  ['fits', 'Saved fits', 'bookmark'],
 ]
 
 export function App() {
@@ -34,6 +36,10 @@ export function App() {
 
   if (!db) return error ? <p className="fatal" role="alert">{error}</p> : null
   const update: Update = change => setDb(d => d && change(d))
+  const showTag = (tag: string) => {
+    setQuery(tag)
+    setView('closet')
+  }
 
   return (
     <div className="shell">
@@ -54,6 +60,7 @@ export function App() {
         )}
         {view === 'closet' && <Closet db={db} update={update} query={query} setQuery={setQuery} onError={setError} />}
         {view === 'dress' && <Dress db={db} update={update} goCloset={() => setView('closet')} />}
+        {view === 'fits' && <Fits db={db} update={update} showTag={showTag} />}
       </main>
     </div>
   )
