@@ -4,15 +4,17 @@ import { loadDb, saveDb } from './store'
 import { Closet } from './Closet'
 import { Dress } from './Dress'
 import { Fits } from './Fits'
+import { Settings } from './Settings'
 import { Icon, Mark, type IconName } from './ui'
 
 export type Update = (change: (db: Db) => Db) => void
-type View = 'closet' | 'dress' | 'fits'
+type View = 'closet' | 'dress' | 'fits' | 'settings'
 
 const NAV: [View, string, IconName][] = [
   ['closet', 'Closet', 'hanger'],
   ['dress', 'Get dressed', 'shuffle'],
   ['fits', 'Saved fits', 'bookmark'],
+  ['settings', 'Settings', 'sliders'],
 ]
 
 export function App() {
@@ -61,6 +63,7 @@ export function App() {
         {view === 'closet' && <Closet db={db} update={update} query={query} setQuery={setQuery} onError={setError} />}
         {view === 'dress' && <Dress db={db} update={update} goCloset={() => setView('closet')} />}
         {view === 'fits' && <Fits db={db} update={update} showTag={showTag} />}
+        {view === 'settings' && <Settings db={db} update={update} />}
       </main>
     </div>
   )
