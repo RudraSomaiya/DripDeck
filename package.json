@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "tauri": "tauri",
-    "test": "node --experimental-strip-types --test src/logic.test.ts"
+    "test": "node --experimental-strip-types --test src/logic.test.ts",
+    "app": "tauri build && node -e \"const f=require('fs');f.mkdirSync('app',{recursive:true});f.copyFileSync('src-tauri/target/release/dripdeck.exe','app/Dripdeck.exe')\""
   },
   "dependencies": {
     "@fontsource-variable/cormorant-garamond": "^5.3.0",
